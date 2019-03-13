@@ -10,6 +10,8 @@ sub council_name { 'Hounslow Borough Council' }
 sub council_url { 'hounslow' }
 sub example_places { ( 'TW3 1SN', "Depot Road" ) }
 
+sub map_type { 'Hounslow' }
+
 sub base_url {
     my $self = shift;
     return $self->next::method() if FixMyStreet->config('STAGING_SITE');
