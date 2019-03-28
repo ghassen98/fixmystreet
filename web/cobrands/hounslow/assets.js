@@ -6,7 +6,7 @@ if (!fixmystreet.maps) {
 
 var defaults = {
     http_options: {
-        url: "https://davea.tilma.dev.mysociety.org/mapserver/hounslow",
+        url: "https://tilma.staging.mysociety.org/mapserver/hounslow",
         params: {
             SERVICE: "WFS",
             VERSION: "1.1.0",
@@ -18,9 +18,9 @@ var defaults = {
     asset_type: 'spot',
     max_resolution: 2.388657133579254,
     min_resolution: 0.5971642833948135,
-    asset_id_field: 'CentralAss',
+    asset_id_field: 'CentralAssetId',
     attributes: {
-        central_asset_id: 'CentralAss',
+        central_asset_id: 'CentralAssetId',
         asset_details: 'FeatureId'
     },
     geometryName: 'msGeometry',
@@ -32,7 +32,7 @@ var defaults = {
 fixmystreet.assets.add($.extend(true, {}, defaults, {
     http_options: {
         params: {
-            TYPENAME: "Bins"
+            TYPENAME: "bins"
         }
     },
     asset_category: "Litter Bins",
@@ -42,17 +42,25 @@ fixmystreet.assets.add($.extend(true, {}, defaults, {
 fixmystreet.assets.add($.extend(true, {}, defaults, {
     http_options: {
         params: {
-            TYPENAME: "Barriers"
+            TYPENAME: "trees"
         }
     },
-    asset_category: "Damage to pedestrian barrier",
-    asset_item: 'barrier'
+    asset_category: [
+        "Tree Danger/Obstruction",
+        "Damage By Tree",
+        "Dead/Dying/Diseased",
+        "Pest: Tree/Shrub",
+        "Tree Branches Overhanging",
+        "Trees",
+        "Tree Maintenance"
+    ],
+    asset_item: 'tree'
 }));
 
 fixmystreet.assets.add($.extend(true, {}, defaults, {
     http_options: {
         params: {
-            TYPENAME: "Signs"
+            TYPENAME: "signs"
         }
     },
     asset_category: [
@@ -63,6 +71,19 @@ fixmystreet.assets.add($.extend(true, {}, defaults, {
         "Sign or road marking missing following works"
     ],
     asset_item: 'sign'
+}));
+
+fixmystreet.assets.add($.extend(true, {}, defaults, {
+    http_options: {
+        params: {
+            TYPENAME: "gulleys"
+        }
+    },
+    asset_category: [
+        "Bad smell",
+        "Flooding"
+    ],
+    asset_item: 'gulley'
 }));
 
 var pin_prefix = fixmystreet.pin_prefix || document.getElementById('js-map-data').getAttribute('data-pin_prefix');
@@ -140,7 +161,7 @@ var labeled_defaults = $.extend(true, {}, defaults, {
 fixmystreet.assets.add($.extend(true, {}, labeled_defaults, {
     http_options: {
         params: {
-            TYPENAME: "Lighting"
+            TYPENAME: "lighting"
         }
     },
     asset_category: [
