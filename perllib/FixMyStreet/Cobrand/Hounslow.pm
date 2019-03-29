@@ -40,7 +40,7 @@ sub send_questionnaires { 0 }
 
 sub enable_category_groups { 1 }
 
-sub report_sent_confirmation_email { 1 }
+sub report_sent_confirmation_email { 'external_id' }
 
 sub open311_post_send {
     my ($self, $row, $h) = @_;
