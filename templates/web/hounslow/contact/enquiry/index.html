@@ -1,0 +1,50 @@
+[% INCLUDE 'header.html',
+    title = loc('General Enquiry')
+%]
+
+<form method="post" action="/contact/enquiry/submit" class="validate">
+    <input type="hidden" name="token" value="[% csrf_token %]">
+    <fieldset>
+        [% INCLUDE 'errors.html' %]
+
+
+        [% INCLUDE 'contact/who.html' %]
+
+        <label for="form_name">[% loc('Your name') %]</label>
+        [% IF field_errors.name %]
+           <div class="form-error">[% field_errors.name %]</div>
+        [% END %]
+        <input type="text" class="form-control required" name="name" id="form_name" value="[% ( form_name OR c.user.name ) | html %]" size="30">
+
+        <label for="form_email">[% loc('Your email') %]</label>
+        [% IF field_errors.em %]
+           <div class="form-error">[% field_errors.em %]</div>
+        [% END %]
+        <input type="text" class="form-control required email" name="em" id="form_email" [% "disabled" IF c.user.email %] value="[% ( em OR c.user.email ) | html %]" size="30">
+
+        <div class="form-group">
+          <label for="form_phone">[% loc('Your phone number') %]</label>
+          <span class="required-text required-text--optional">optional</span>
+          <input type="text" class="form-control extra.phone" name="extra.phone" id="form_phone" value="" size="30">
+        </div>
+
+        <label for="form_title">[% loc('Subject') %]</label>
+        [% IF field_errors.title %]
+           <div class="form-error">[% field_errors.title %]</div>
+        [% END %]
+        <input type="text" class="form-control required" name="title" id="form_title" value="[% title | html %]" size="30">
+
+        <label for="form_detail">[% loc('Message') %]</label>
+        [% IF field_errors.detail %]
+           <div class="form-error">[% field_errors.detail %]</div>
+        [% END %]
+        <textarea class="form-control required" name="detail" id="form_detail" rows="7" cols="50">[% detail | html %]</textarea>
+
+        <input type="hidden" name="latitude" value="0" />
+        <input type="hidden" name="longitude" value="0" />
+        <input type="hidden" name="category" value="General Enquiries" />
+        <input class="final-submit green-btn" type="submit" name="submit_problem" value="[% loc('Send') %]">
+
+    </fieldset></form>
+
+[% INCLUDE 'footer.html' pagefooter = 'yes' %]

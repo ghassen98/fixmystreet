@@ -76,6 +76,22 @@ sub should_skip_sending_update {
     return $update->user_id != $update->problem->user_id;
 }
 
+sub allow_general_enquiries { 1 }
 
+sub setup_general_enquiries_stash {
+  my $self = shift;
+
+  my @bodies = $self->{c}->model('DB::Body')->active->for_areas(( $self->council_area_id ))->all;
+  my %bodies = map { $_->id => $_ } @bodies;
+  my @contacts                #
+    = $self->{c}              #
+    ->model('DB::Contact')    #
+    ->active
+    ->search( { 'me.body_id' => [ keys %bodies ] }, { prefetch => 'body' } )->all;
+  $self->{c}->stash->{bodies} = \%bodies;
+  $self->{c}->stash->{contacts} = \@contacts;
+
+
+}
 
 1;
