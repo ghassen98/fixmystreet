@@ -1,0 +1,29 @@
+[% INCLUDE 'header.html', bodyclass = 'fullwidthpage', title = loc('Confirmation') %]
+
+<div class="confirmation-header">
+
+  <h1>[% report.category %]</h1>
+
+    <h2>[% loc('Thank you for getting in touch.') %]</h2>
+    [% IF report.bodies_str %]
+      <p>[% loc("We'll get back to you soon.") %]</p>
+    [% END %]
+
+
+  <p class="confirmation-again">
+    <a href="/" class="btn btn-primary">
+      [% loc('Back to homepage') %]
+    </a>
+  </p>
+
+</div>
+
+[% INCLUDE
+  next_steps.html,
+  just_interacted = 1,
+  utm_content = 'problem confirmed',
+  share_url = c.cobrand.base_url_for_report(report) _ report.url,
+  twitter_comment = loc('I just reported a problem on @fixmystreet')
+%]
+
+[% INCLUDE 'footer.html' %]

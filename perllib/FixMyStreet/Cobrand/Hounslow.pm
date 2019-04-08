@@ -88,8 +88,12 @@ sub setup_general_enquiries_stash {
     ->model('DB::Contact')    #
     ->active
     ->search( { 'me.body_id' => [ keys %bodies ] }, { prefetch => 'body' } )->all;
+  @contacts = grep { $_->get_extra_metadata('group') eq 'Other' || $_->get_extra_metadata('group') eq 'General Enquiries'} @contacts;
   $self->{c}->stash->{bodies} = \%bodies;
   $self->{c}->stash->{contacts} = \@contacts;
+  $self->{c}->stash->{missing_details_bodies} = [];
+  $self->{c}->stash->{missing_details_body_names} = [];
+
 
 
 }

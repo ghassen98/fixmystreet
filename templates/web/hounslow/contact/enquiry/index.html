@@ -1,5 +1,6 @@
 [% INCLUDE 'header.html',
-    title = loc('General Enquiry')
+   bodyclass = 'twothirdswidthpage',
+   title = loc('General Enquiry')
 %]
 
 <form method="post" action="/contact/enquiry/submit" class="validate">
@@ -17,10 +18,10 @@
         <input type="text" class="form-control required" name="name" id="form_name" value="[% ( form_name OR c.user.name ) | html %]" size="30">
 
         <label for="form_email">[% loc('Your email') %]</label>
-        [% IF field_errors.em %]
-           <div class="form-error">[% field_errors.em %]</div>
+        [% IF field_errors.username %]
+           <div class="form-error">[% field_errors.username %]</div>
         [% END %]
-        <input type="text" class="form-control required email" name="em" id="form_email" [% "disabled" IF c.user.email %] value="[% ( em OR c.user.email ) | html %]" size="30">
+        <input type="text" class="form-control required email" name="username" id="form_email" [% "disabled" IF c.user.email %] value="[% ( username OR c.user.email ) | html %]" size="30">
 
         <div class="form-group">
           <label for="form_phone">[% loc('Your phone number') %]</label>
@@ -28,11 +29,16 @@
           <input type="text" class="form-control extra.phone" name="extra.phone" id="form_phone" value="" size="30">
         </div>
 
-        <label for="form_title">[% loc('Subject') %]</label>
-        [% IF field_errors.title %]
-           <div class="form-error">[% field_errors.title %]</div>
+        <label for="form_category">[% loc('Subject') %]</label>
+        [% IF field_errors.category %]
+           <div class="form-error">[% field_errors.category %]</div>
         [% END %]
-        <input type="text" class="form-control required" name="title" id="form_title" value="[% title | html %]" size="30">
+        <select class="form-control required" name="category" id="category">
+         <option value="">-- Please select --</option>
+        [% FOREACH contact IN contacts %]
+         <option value="[% contact.category | html %]">[% contact.category %]</option>
+        [% END %]
+        </select>
 
         <label for="form_detail">[% loc('Message') %]</label>
         [% IF field_errors.detail %]
@@ -40,8 +46,6 @@
         [% END %]
         <textarea class="form-control required" name="detail" id="form_detail" rows="7" cols="50">[% detail | html %]</textarea>
 
-        <input type="hidden" name="latitude" value="0" />
-        <input type="hidden" name="longitude" value="0" />
         <input type="hidden" name="category" value="General Enquiries" />
         <input class="final-submit green-btn" type="submit" name="submit_problem" value="[% loc('Send') %]">
 
