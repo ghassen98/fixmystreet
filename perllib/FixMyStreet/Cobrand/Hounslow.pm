@@ -68,6 +68,16 @@ sub open311_config {
     $row->set_extra_fields(@$extra);
 }
 
+sub open311_pre_send {
+    my ($self, $row, $open311) = @_;
+
+    return unless $row->isa("FixMyStreet::DB::Result::Comment");
+
+    unless ($row->user_id eq $row->problem->user_id) {
+        $row->text($row->text . "\n[This comment was not left by the original problem reporter]");
+    }
+}
+
 sub allow_general_enquiries { 1 }
 
 sub setup_general_enquiries_stash {
