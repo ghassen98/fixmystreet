@@ -1,6 +1,6 @@
+[% UNLESS problem.is_open %]
+<p>If this problem is still ongoing, please open a new report instead of updating this one.</p>
+[% END %]
 <p>
-  [% UNLESS problem.updates_sent_to_body AND c.user_exists AND c.user.id == problem.user_id %]
-    [% loc( 'Please note that updates are not sent to the council.' ) %]
-  [% END %]
-    [% loc( 'Your information will only be used in accordance with our <a href="/privacy">privacy policy</a>' ) %]
+    [% loc( 'Your information will only be used in accordance with our <a href="/privacy">privacy policy</a>.' ) %]
 </p>
