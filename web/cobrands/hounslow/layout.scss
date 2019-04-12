@@ -12,3 +12,10 @@ body.twothirdswidthpage .content .sticky-sidebar aside {
     padding: 1em 0;
     background-size: 231px 102px;
 }
+
+// Stop visited nav links being purple when hovering over them
+.nav-menu--main {
+    a:hover {
+      color: $primary_text;
+    }
+}
