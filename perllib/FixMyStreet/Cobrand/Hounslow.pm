@@ -78,6 +78,12 @@ sub open311_pre_send {
     }
 }
 
+sub open311_skip_report_fetch {
+  my ($self, $problem) = @_;
+
+  return 1 if $problem->non_public;
+}
+
 sub allow_general_enquiries { 1 }
 
 sub setup_general_enquiries_stash {
