@@ -66,6 +66,8 @@ sub open311_config {
           value => $row->detail };
 
     $row->set_extra_fields(@$extra);
+
+    $params->{multi_photos} = 1;
 }
 
 sub open311_pre_send {
