@@ -26,7 +26,7 @@
         <div class="form-group">
           <label for="form_phone">[% loc('Your phone number') %]</label>
           <span class="required-text required-text--optional">optional</span>
-          <input type="text" class="form-control extra.phone" name="extra.phone" id="form_phone" value="" size="30">
+          <input type="text" class="form-control extra.phone" name="extra.phone" id="form_phone" value="[% report.user.phone | html %]" size="30">
         </div>
 
         <label for="form_category">[% loc('Subject') %]</label>
@@ -36,7 +36,7 @@
         <select class="form-control required" name="category" id="category">
          <option value="">-- Please select --</option>
         [% FOREACH contact IN contacts %]
-         <option value="[% contact.category | html %]">[% contact.category %]</option>
+         <option value="[% contact.category | html %]" [% "selected" IF report.category == contact.category %]>[% contact.category %]</option>
         [% END %]
         </select>
 
