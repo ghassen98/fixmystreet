@@ -47,13 +47,26 @@ fixmystreet.assets.add($.extend(true, {}, defaults, {
     },
     asset_category: [
         "Tree Danger/Obstruction",
+        "Branches overhanging",
         "Damage By Tree",
         "Dead/Dying/Diseased",
+        "Dying or dangerous tree",
+        "Empty tree Pit",
+        "Fallen or leaning tree",
+        "General Maintenance and pruning",
+        "Hedge causing obstruction",
+        "Illuminated Traffic signal obstructed by vegetation",
         "Pest: Tree/Shrub",
+        "Pests in trees and shrubs",
+        "Sponsor a tree",
         "Tree Branches Overhanging",
-        "Trees",
-        "Tree Maintenance"
-    ],
+        "Tree Maintenance",
+        "Tree causing damage to property",
+        "Tree obstructing street light",
+        "Trees or shrubs blocking visibility",
+        "Trees or shrubs causing obstruction of highway",
+        "Trees"
+      ],
     asset_item: 'tree'
 }));
 
@@ -66,9 +79,11 @@ fixmystreet.assets.add($.extend(true, {}, defaults, {
     asset_category: [
         "Sign Obstructed: Vegetation",
         "Missing sign",
+        "Missing/ damaged traffic sign",
+        "Sign or road marking missing following works",
         "Street nameplate damaged",
-        "Unlit sign knocked down",
-        "Sign or road marking missing following works"
+        "Traffic Sign obstructed (vegetation)",
+        "Unlit sign knocked down"
     ],
     asset_item: 'sign'
 }));
@@ -165,19 +180,27 @@ fixmystreet.assets.add($.extend(true, {}, labeled_defaults, {
         }
     },
     asset_category: [
-        "Street light not working",
+        "Bollard Out Of Light",
         "Damage to paintwork",
-        "Unauthorised sign",
-        "Street light leaning",
-        "Street light on during the day",
-        "Street light wiring exposed",
-        "Street lights on during the day",
+        "Damage to paintwork/ column",
+        "Door Missing/ open",
+        "Lights too bright/ dull",
         "New LED lights not working",
         "New LED lights too bright",
         "New LED lights too dull",
-        "Bollard Out Of Light",
+        "Not coming on/ faulty",
+        "Street light leaning",
+        "Street light not working",
+        "Street light on during the day",
+        "Street light wiring exposed",
+        "Street lights on during the day",
+        "Subway light faulty",
+        "Unauthorised sign",
         "Veg Obstructed: Street Light",
-        "Zebra crossing beacon fault"
+        "Zebra crossing beacon fault",
+        "Zebra crossing/ belisha faulty",
+        "Illuminated Traffic signal obstructed by vegetation",
+        "Tree obstructing street light"
     ],
     asset_item: 'light',
 }));
