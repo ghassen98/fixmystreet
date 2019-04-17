@@ -651,4 +651,14 @@ function ncc_check_streetlights() {
 }
 $(fixmystreet).on('report_new:category_change', ncc_check_streetlights);
 
+var org_id = '1089';
+fixmystreet.assets.add($.extend(true, {}, fixmystreet.roadworks.layer_future, {
+    http_options: { params: { organisation_id: org_id } },
+    body: northants_defaults.body
+}));
+fixmystreet.assets.add($.extend(true, {}, fixmystreet.roadworks.layer_planned, {
+    http_options: { params: { organisation_id: org_id } },
+    body: northants_defaults.body
+}));
+
 })();
