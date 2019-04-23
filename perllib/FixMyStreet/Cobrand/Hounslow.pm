@@ -18,6 +18,8 @@ sub base_url {
     return 'https://fms.hounslowhighways.org';
 }
 
+sub admin_user_domain { 'hounslowhighways.org' }
+
 sub disambiguate_location {
     my $self    = shift;
     my $string  = shift;
