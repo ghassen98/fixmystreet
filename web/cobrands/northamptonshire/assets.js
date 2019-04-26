@@ -433,7 +433,7 @@ var northants_defaults = $.extend(true, {}, fixmystreet.assets.alloy_defaults, {
 
 $.each(layers, function(index, layer) {
     if ( layer.categories ) {
-        fixmystreet.assets.add($.extend(true, {}, northants_defaults, {
+        fixmystreet.assets.add(northants_defaults, {
             http_options: {
               layerid: layer.layer,
               layerVersion: layer.version,
@@ -441,7 +441,7 @@ $.each(layers, function(index, layer) {
             asset_type: layer.asset_type || 'spot',
             asset_category: layer.categories,
             asset_item: layer.item_name || layer.layer_name.toLowerCase(),
-        }));
+        });
     }
 });
 
@@ -493,7 +493,7 @@ var northants_road_defaults = $.extend(true, {}, fixmystreet.assets.alloy_defaul
 });
 
 
-fixmystreet.assets.add($.extend(true, {}, northants_road_defaults, {
+fixmystreet.assets.add(northants_road_defaults, {
     http_options: {
       layerid: 221,
       layerVersion: '221.4-',
@@ -503,7 +503,7 @@ fixmystreet.assets.add($.extend(true, {}, northants_road_defaults, {
     asset_category: [
         "Damaged Speed Humps",
     ]
-}));
+});
 
 var barrier_style = new OpenLayers.Style({
     fill: false,
@@ -512,7 +512,7 @@ var barrier_style = new OpenLayers.Style({
     strokeWidth: 4
 });
 
-fixmystreet.assets.add($.extend(true, {}, northants_road_defaults, {
+fixmystreet.assets.add(northants_road_defaults, {
     http_options: {
       layerid: 230,
       layerVersion: '230.3-',
@@ -524,7 +524,7 @@ fixmystreet.assets.add($.extend(true, {}, northants_road_defaults, {
     asset_category: [
         "Pedestrian Barriers - Damaged / Missing",
     ]
-}));
+});
 
 var highways_style = new OpenLayers.Style({
     fill: false,
@@ -533,7 +533,7 @@ var highways_style = new OpenLayers.Style({
     strokeWidth: 7
 });
 
-fixmystreet.assets.add($.extend(true, {}, northants_road_defaults, {
+fixmystreet.assets.add(northants_road_defaults, {
     protocol_class: OpenLayers.Protocol.Alloy,
     http_options: {
       layerid: is_live ? 20 : 308,
@@ -571,7 +571,7 @@ fixmystreet.assets.add($.extend(true, {}, northants_road_defaults, {
         "Restricted Visibility / Overgrown / Overhanging",
         "Restricted Visibility",
     ]
-}));
+});
 
 
 var prow_style = new OpenLayers.Style({
@@ -581,7 +581,7 @@ var prow_style = new OpenLayers.Style({
     strokeWidth: 7
 });
 
-fixmystreet.assets.add($.extend(true, {}, northants_road_defaults, {
+fixmystreet.assets.add(northants_road_defaults, {
     http_options: {
       layerid: 173,
       layerVersion: '173.1-',
@@ -594,7 +594,7 @@ fixmystreet.assets.add($.extend(true, {}, northants_road_defaults, {
       "Livestock",
       "Passage-Obstructed/Overgrown"
     ]
-}));
+});
 
 function ncc_is_emergency_category() {
     var relevant_body = OpenLayers.Util.indexOf(fixmystreet.bodies, northants_defaults.body) > -1;
