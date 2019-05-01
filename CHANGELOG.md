@@ -1,6 +1,8 @@
 ## Releases
 
 * Unreleased
+    - Open311 improvements:
+        - Allow description/user name in email template with tokens.
 
 * v2.6 (3rd May 2019)
     - New features:
