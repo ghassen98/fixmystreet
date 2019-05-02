@@ -7,7 +7,7 @@ use warnings;
 sub council_area_id { 2636 }
 sub council_area { 'Isle of Wight' }
 sub council_name { 'Isle of Wight Council' }
-sub council_url { 'iow' }
+sub council_url { 'isleofwight' }
 sub example_places { ( 'PO30 5XJ', "Daish Way" ) }
 
 sub base_url {
