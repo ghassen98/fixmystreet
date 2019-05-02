@@ -205,4 +205,26 @@ fixmystreet.assets.add($.extend(true, {}, labeled_defaults, {
     asset_item: 'light',
 }));
 
+fixmystreet.assets.add($.extend(true, {}, defaults, {
+    http_options: {
+        params: {
+            TYPENAME: "streets"
+        }
+    },
+    max_resolution: 4.777314267158508,
+    always_visible: true,
+    non_interactive: true,
+    usrn: {
+        attribute: 'SITE_CODE',
+        field: 'site_code'
+    },
+    stylemap: new OpenLayers.StyleMap({
+        'default': new OpenLayers.Style({
+            fill: false,
+            stroke: false
+        })
+    })
+}));
+
+
 })();
