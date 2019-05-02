@@ -416,7 +416,10 @@ sub lookup_by_ref : Private {
             external_id => $ref
         ];
 
-    my $problems = $c->cobrand->problems->search( $criteria );
+    my $problems = $c->cobrand->problems->search({ -and => {
+        non_public => 0,
+        -or => $criteria
+    }});
 
     my $count = try {
         $problems->count;
