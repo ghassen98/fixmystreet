@@ -21,6 +21,7 @@ sub index : Path : Args(0) {
     # Make sure existing files aren't lost if we're rendering this
     # page as a result of validation error.
     delete $c->session->{enquiry_files} unless $preserve_session;
+    $c->stash->{field_errors}->{name} = _("Please enter your full name.") if $c->stash->{field_errors}->{name};
 }
 
 sub submit : Path('submit') : Args(0) {
