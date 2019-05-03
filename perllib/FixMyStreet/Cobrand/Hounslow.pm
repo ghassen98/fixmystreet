@@ -6,7 +6,7 @@ use warnings;
 
 sub council_area_id { 2483 }
 sub council_area { 'Hounslow' }
-sub council_name { 'Hounslow Borough Council' }
+sub council_name { 'Hounslow Highways' }
 sub council_url { 'hounslow' }
 sub example_places { ( 'TW3 1SN', "Depot Road" ) }
 
@@ -41,6 +41,31 @@ sub contact_email {
 sub send_questionnaires { 0 }
 
 sub enable_category_groups { 1 }
+
+sub categories_restriction {
+    my ($self, $rs) = @_;
+    # Hounslow Highways only want to show their categories
+    # on their cobrand, not those of Hounslow Borough Council
+    return $rs->search( {
+        'body.name' => "Hounslow Highways",
+    } );
+}
+
+sub problems_restriction {
+    my ($self, $rs) = @_;
+    return $rs if FixMyStreet->staging_flag('skip_checks');
+    my @bodies = FixMyStreet::DB->resultset('Body')->search({ name => $self->council_name })->all;
+    @bodies = map { $_->id } @bodies;
+    return $rs->to_body(\@bodies);
+}
+
+sub updates_restriction {
+    my ($self, $rs) = @_;
+    return $rs if FixMyStreet->staging_flag('skip_checks');
+    my @bodies = FixMyStreet::DB->resultset('Body')->search({ name => $self->council_name })->all;
+    @bodies = map { $_->id } @bodies;
+    return $rs->to_body(\@bodies);
+}
 
 sub report_sent_confirmation_email { 'external_id' }
 
