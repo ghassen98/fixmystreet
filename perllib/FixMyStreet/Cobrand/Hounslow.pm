@@ -44,27 +44,12 @@ sub enable_category_groups { 1 }
 
 sub categories_restriction {
     my ($self, $rs) = @_;
-    # Hounslow Highways only want to show their categories
-    # on their cobrand, not those of Hounslow Borough Council
-    return $rs->search( {
-        'body.name' => "Hounslow Highways",
-    } );
-}
-
-sub problems_restriction {
-    my ($self, $rs) = @_;
-    return $rs if FixMyStreet->staging_flag('skip_checks');
-    my @bodies = FixMyStreet::DB->resultset('Body')->search({ name => $self->council_name })->all;
-    @bodies = map { $_->id } @bodies;
-    return $rs->to_body(\@bodies);
-}
-
-sub updates_restriction {
-    my ($self, $rs) = @_;
-    return $rs if FixMyStreet->staging_flag('skip_checks');
-    my @bodies = FixMyStreet::DB->resultset('Body')->search({ name => $self->council_name })->all;
-    @bodies = map { $_->id } @bodies;
-    return $rs->to_body(\@bodies);
+    # Categories covering the Hounslow area have a mixture of Open311 and Email
+    # send methods. Hounslow only want Open311 categories to be visible on their
+    # cobrand, not the email categories from FMS.com. We've set up the
+    # Email categories with a devolved send_method, so can identify Open311
+    # categories as those which have a blank send_method.
+    return $rs->search( { 'me.send_method' => undef } );
 }
 
 sub report_sent_confirmation_email { 'external_id' }
