@@ -27,8 +27,13 @@ sub disambiguate_location {
     return {
         %{ $self->SUPER::disambiguate_location() },
         centre => '51.468495,-0.366134',
+        town => "Hounslow",
         bounds => [ 51.420739, -0.461502, 51.502850, -0.243443 ],
     };
+}
+
+sub get_geocoder {
+    return 'OSM'; # default of Bing gives poor results, let's try overriding.
 }
 
 sub on_map_default_status { 'open' }
