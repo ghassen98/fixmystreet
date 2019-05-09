@@ -29,7 +29,7 @@ var defaults = {
     body: "Hounslow Borough Council"
 };
 
-fixmystreet.assets.add($.extend(true, {}, defaults, {
+fixmystreet.assets.add(defaults, {
     http_options: {
         params: {
             TYPENAME: "bins"
@@ -37,9 +37,9 @@ fixmystreet.assets.add($.extend(true, {}, defaults, {
     },
     asset_category: "Litter Bins",
     asset_item: 'bin'
-}));
+});
 
-fixmystreet.assets.add($.extend(true, {}, defaults, {
+fixmystreet.assets.add(defaults, {
     http_options: {
         params: {
             TYPENAME: "trees"
@@ -68,9 +68,9 @@ fixmystreet.assets.add($.extend(true, {}, defaults, {
         "Trees"
       ],
     asset_item: 'tree'
-}));
+});
 
-fixmystreet.assets.add($.extend(true, {}, defaults, {
+fixmystreet.assets.add(defaults, {
     http_options: {
         params: {
             TYPENAME: "signs"
@@ -86,9 +86,9 @@ fixmystreet.assets.add($.extend(true, {}, defaults, {
         "Unlit sign knocked down"
     ],
     asset_item: 'sign'
-}));
+});
 
-fixmystreet.assets.add($.extend(true, {}, defaults, {
+fixmystreet.assets.add(defaults, {
     http_options: {
         params: {
             TYPENAME: "gulleys"
@@ -99,7 +99,7 @@ fixmystreet.assets.add($.extend(true, {}, defaults, {
         "Flooding"
     ],
     asset_item: 'gulley'
-}));
+});
 
 var pin_prefix = fixmystreet.pin_prefix || document.getElementById('js-map-data').getAttribute('data-pin_prefix');
 
@@ -173,7 +173,7 @@ var labeled_defaults = $.extend(true, {}, defaults, {
     }
 });
 
-fixmystreet.assets.add($.extend(true, {}, labeled_defaults, {
+fixmystreet.assets.add(labeled_defaults, {
     http_options: {
         params: {
             TYPENAME: "lighting"
@@ -203,9 +203,9 @@ fixmystreet.assets.add($.extend(true, {}, labeled_defaults, {
         "Tree obstructing street light"
     ],
     asset_item: 'light',
-}));
+});
 
-fixmystreet.assets.add($.extend(true, {}, defaults, {
+fixmystreet.assets.add(defaults, {
     http_options: {
         params: {
             TYPENAME: "streets"
@@ -224,7 +224,7 @@ fixmystreet.assets.add($.extend(true, {}, defaults, {
             stroke: false
         })
     })
-}));
+});
 
 
 })();
