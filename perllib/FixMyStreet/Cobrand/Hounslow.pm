@@ -20,6 +20,11 @@ sub base_url {
 
 sub admin_user_domain { 'hounslowhighways.org' }
 
+sub enter_postcode_text {
+    my ($self) = @_;
+    return "Enter a Hounslow street name and area, or postcode";
+}
+
 sub disambiguate_location {
     my $self = shift;
     my $string = shift;
