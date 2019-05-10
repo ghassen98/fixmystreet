@@ -24,10 +24,17 @@ sub disambiguate_location {
     my $self = shift;
     my $string = shift;
 
+    my $town = "Hounslow";
+
+    # Some specific Hounslow roads produce lots of geocoder results
+    # for the same road; this picks just one.
+    $town = "TW3 4HR" if $string =~ /lampton\s+road/i;
+    $town = "TW3 4AJ" if $string =~ /kingsley\s+road/i;
+
     return {
         %{ $self->SUPER::disambiguate_location() },
         centre => '51.468495,-0.366134',
-        town => "Hounslow",
+        town => $town,
         bounds => [ 51.420739, -0.461502, 51.502850, -0.243443 ],
     };
 }
