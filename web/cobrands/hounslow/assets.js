@@ -96,7 +96,10 @@ fixmystreet.assets.add(defaults, {
     },
     asset_category: [
         "Bad smell",
-        "Flooding"
+        "Flooding",
+        "Blocked gully",
+        "Damaged/ cracked drain or man hole cover",
+        "Missing drain or man hole cover"
     ],
     asset_item: 'gulley'
 });
